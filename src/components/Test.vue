@@ -1,15 +1,18 @@
 <template>
   <div class="test">
-      <input type="text" v-model="title">
-      <br />
-     <h1>{{title}}</h1>
-     <!-- <span v-html="title"></span> -->
-     <p v-if="showName">{{user.firstName}}</p>
-     <p v-else>You don't have a name</p>
-     <!-- <p v-text="user.lastName"></p> -->
-     <ul>
-       <li v-for="item in items" v-bind:key="item">{{item.title}}</li>
-     </ul>
+    <input type="text" v-model="title">
+    <br />
+    <h1>{{title}}</h1>
+    <!-- <span v-html="title"></span> -->
+    <p v-if="showName">{{user.firstName}}</p>
+    <p v-else>You don't have a name</p>
+    <!-- <p v-text="user.lastName"></p> -->
+    <ul>
+      <li v-for="item in items" v-bind:key="item">{{item.title}}</li>
+    </ul>
+    <button v-on:click="greet('Hello Zaire')">Say Greeting</button>
+    <br />
+    <input type="text" @keyup="pressKey">
   </div>
 </template>
 
@@ -29,9 +32,17 @@
               {title: 'Item One'},
               {title: 'Item Two'},
               {title: 'Item Three'},
-            ]
+            ],
           }
-       } 
+       },
+       methods: {
+          greet: function(greeting) {
+              alert(greeting);
+          },
+          pressKey: function(event) {
+              console.log(event.target.value);
+          }
+        } 
     }
 </script>
 
